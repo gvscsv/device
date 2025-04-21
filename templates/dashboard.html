@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Plant Water Monitoring</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e0f7fa, #ffffff);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 90%;
+            width: 400px;
+            margin: auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #00796b;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .status {
+            font-weight: bold;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .on {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        .on:hover {
+            background-color: #43a047;
+            transform: scale(1.05);
+        }
+
+        .off {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .off:hover {
+            background-color: #e53935;
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            margin-top: auto;
+            padding: 20px 10px;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 20px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Device Dashboard</h1>
+        <p><strong>Flow Rate:</strong> <span class="status">{{ flow_rate }} L/min</span></p>
+        <p><strong>Total Litres:</strong> <span class="status">{{ total_litres }} L</span></p>
+        <p><strong>Relay State:</strong> <span class="status">{{ 'ON' if relay else 'OFF' }}</span></p>
+
+        <form method="POST">
+            <button type="submit" name="relay" value="1" class="on">Turn ON</button>
+            <button type="submit" name="relay" value="0" class="off">Turn OFF</button>
+        </form>
+    </div>
+
+    <footer>
+        &copy; All Rights Reserved - IOT GREEN TECH
+    </footer>
+</body>
+</html>
